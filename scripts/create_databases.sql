@@ -1,5 +1,6 @@
-CREATE DATABASE <your development database name>
-WITH OWNER = <your local db user>;
+CREATE DATABASE capybara_db_practice_development
+WITH OWNER = gschool_user;
 
-CREATE DATABASE <your test database name>
-WITH OWNER = <your local db user>;
+CREATE DATABASE capybara_db_practice_testing
+WITH OWNER = gschool_user;
+

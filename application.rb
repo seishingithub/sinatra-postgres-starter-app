@@ -12,6 +12,15 @@ class Application < Sinatra::Application
   end
 
   get '/' do
-    erb :index
+    erb :index, :locals => {:email => "joe@schmo.com", :welcome => "Welcome"}
   end
+
+  get '/register' do
+    erb :register
+  end
+
+  post '/register' do
+    redirect '/'
+  end
+
 end
