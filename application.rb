@@ -1,6 +1,7 @@
 require 'sinatra/base'
 
 class Application < Sinatra::Application
+  enable :sessions
 
   def initialize(app=nil)
     super(app)
@@ -12,7 +13,8 @@ class Application < Sinatra::Application
   end
 
   get '/' do
-    erb :index, :locals => {:email => "joe@schmo.com", :welcome => "Welcome"}
+    email = session[:email]
+    erb :index, :locals => {:email => email, :welcome => "Welcome"}
   end
 
   get '/register' do
@@ -20,6 +22,8 @@ class Application < Sinatra::Application
   end
 
   post '/register' do
+    session[:email] = params[:email]
+    p params
     redirect '/'
   end
 

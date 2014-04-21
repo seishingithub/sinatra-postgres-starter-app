@@ -17,4 +17,17 @@ feature 'Homepage' do
 
     expect(page).to have_content('Welcome, joe@schmo.com')
   end
+
+  scenario '2nd User can register' do
+    visit '/'
+
+    click_link 'Register'
+
+    expect(current_path).to eq('/register')
+    fill_in('email', :with => 'jill@schmo.com')
+    fill_in('password', :with => '1234')
+
+    click_button 'Register'
+    expect(page).to have_content('Welcome, jill@schmo.com')
+  end
 end
